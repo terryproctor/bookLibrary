@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<head>
+<title>Books</title>
+<style type="text/css"></style>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- book library -->
+    <h1>My Library</h1>
+    <div class="bookContainer">
+    </div>
+
+    <!-- buttons -->
+    <!-- <button id="newBook">NEW BOOK</button> -->
+
+    <!-- new book form -->
+    <div id="bookFormContainer">
+        <fieldset>
+        <legend><b>Add Book</b></legend>
+        
+        <form id="form">
+        <p>Title: <input type="text" name="title" size="100" maxlength="100">
+        </p>
+        <p>Author: <input type="text" name="author" size="50" maxlength="50">
+        </p>
+        <p>Pages: <input type="number" name="pages">
+        </p>
+        <p>Read:</p> 
+        <input type="radio" name="read" value="true"><label for="Yes">Yes</label>
+        <input type="radio" name="read" value="false" checked="checked"><label for="No">No</label>
+        </p>
+        <input type="submit" name="submitBook" value="Submit" id="submitBook"/>
+        <p id="formErrors"></p>
+        </form>
+
+        </fieldset>    
+    </div>
+
+</body>
+<script src="books.js"></script>
