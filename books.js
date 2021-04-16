@@ -25,6 +25,7 @@ addBookToLibrary('50 Shades of Gray', 'Who Cares', 12, false)
 
 let bookContainer = document.getElementsByClassName('bookContainer')[0];
 
+
 // need to add function where book is displayed in DOM as a div
 function displayBooks(item){
     // book box is divs for each box
@@ -38,10 +39,20 @@ function displayBooks(item){
     book.textContent = item.info();
     book.dataset.value = myLibrary.indexOf(item);
     let delBtn = document.createElement('button');
-    delBtn.dataset.value = myLibrary.indexOf(item); 
+    delBtn.dataset.value = book.dataset.value; 
     delBtn.textContent = 'Delete';
-    delBtn.class = 'delete';
+    delBtn.className = 'delete';
+    let readBtn = document.createElement('button');
+    readBtn.dataset.value = book.dataset.value; 
+    if (item.read === true) {
+    readBtn.textContent = 'Read';
+    readBtn.className = 'read';
+    } else if (item.read === false) {
+    readBtn.textContent = 'Not Read';
+    readBtn.className = 'notRead';
+    }
     bookBox.appendChild(book);
+    book.appendChild(readBtn);
     book.appendChild(delBtn);
 }
 // display all books initially
@@ -63,12 +74,12 @@ form.addEventListener('submit', function(e){
             if (rBtn.value === "true") {
             selectedRadio = true; 
             } else {
-            selectRadio = false;
+            selectRadio = Boolean(false);
             }
-            console.log(selectedRadio);
+            console.log(Boolean(selectedRadio));
         }
     }
-    const read = selectedRadio;
+    const read = Boolean(selectedRadio);
     ;
     if (!(title && author && pages)) {
         alert('All fields need to be filled in!');
@@ -83,7 +94,7 @@ form.addEventListener('submit', function(e){
 bookContainer.addEventListener('click', function(e){
     e.preventDefault();
     let target = e.target;
-    if (target.class === 'delete') {
+    if (target.className === 'delete') {
         console.log(myLibrary)
         console.log(target.dataset.value)
         myLibrary.splice(target.dataset.value, 1);
@@ -92,15 +103,15 @@ bookContainer.addEventListener('click', function(e){
         // refresh all nodes to myLibrary
         myLibrary.forEach(displayBooks);
     }
-    // if (target.class === 'read') {
-    //     console.log(target.dataset.value)
-    //     myLibrary[target.dataset.value] = false;
-    //     target.class = 'notRead';
-    //     target.textContent = 'Not Read';
-    // }
-    // if (target.class === 'notRead') {
-    //     myLibrary[target.dataset.value] = true;
-    //     target.class = 'read';
-    //     target.textContent = 'Read';
-    // }
+    if (target.className === 'read') {
+        console.log(target.Name)
+        myLibrary[target.dataset.value] = false;
+        target.className = 'notRead';
+        target.textContent = 'Not Read';
+    } else if (target.className === 'notRead') {
+        console.log(target.className)
+        myLibrary[target.dataset.value] = true;
+        target.className = 'read';
+        target.textContent = 'Read';
+    }
 });
