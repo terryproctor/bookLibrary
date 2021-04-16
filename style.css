@@ -3,11 +3,11 @@
     color:purple;
 }
 
-.read {
+.notRead {
     color: rgb(36, 63, 214);
 }
 
-.notRead {
+.read {
     color:rgb(5, 145, 12)
 }
 

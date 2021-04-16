@@ -8,7 +8,8 @@ class Book {
         this.pages = pages;
         this.read = read;
         this.info = () => {
-            return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`;
+            //return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`;
+            return `${this.title} by ${this.author}, ${this.pages} pages`
         };
     }
 }
