@@ -37,6 +37,7 @@ function displayBooks(item){
     
     // book is just info for that book
     let book = document.createElement('div');
+    book.className = "book";
     book.textContent = item.info();
     book.dataset.value = myLibrary.indexOf(item);
     let delBtn = document.createElement('button');
@@ -77,7 +78,7 @@ form.addEventListener('submit', function(e){
             } else {
             selectRadio = Boolean(false);
             }
-            console.log(Boolean(selectedRadio));
+        
         }
     }
     const read = Boolean(selectedRadio);
@@ -105,12 +106,10 @@ bookContainer.addEventListener('click', function(e){
         myLibrary.forEach(displayBooks);
     }
     if (target.className === 'read') {
-        console.log(target.Name)
         myLibrary[target.dataset.value] = false;
         target.className = 'notRead';
         target.textContent = 'Not Read';
     } else if (target.className === 'notRead') {
-        console.log(target.className)
         myLibrary[target.dataset.value] = true;
         target.className = 'read';
         target.textContent = 'Read';

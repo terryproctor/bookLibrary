@@ -1,17 +1,75 @@
+.bookContainer {
+    width: 85%;
+    margin: 0 auto;
+    
+}
+
 .book{
-    font-family: Arial, Helvetica, sans-serif;
-    color:purple;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1px;
+    padding: 2px;
 }
 
 .notRead {
-    color: rgb(36, 63, 214);
+    background-color: rgb(36, 63, 214);
+    color: white;
+    margin-left: auto;
+    width: 75px;
 }
 
 .read {
-    color:rgb(5, 145, 12)
+    background-color:rgb(5, 145, 12);
+    color: white;
+    margin-left: auto;
+    width: 75px;
 }
 
 .delete {
     background-color: rgb(250, 28, 28);
     color:white;
+    
+}
+
+body {
+    background-color: rgb(121, 66, 250);
+    color: white;
+}
+
+h1 {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    
+}
+
+main {
+    margin: 35px;
+    
+}
+
+fieldset {
+    border: rgba(0, 0, 0, 0.5) 1px solid;
+    border-radius: 5px;
+    box-shadow: rgba(10, 10, 10, 0.233) 5px 10px;
+    margin-top: 35px;
+
+}
+
+#submitBook {
+    background-color:rgb(115, 53, 230);
+    color:white;
+}
+
+input[name=title] {
+    margin-left: 15px;
+}
+
+input[name=pages] {
+    margin-left: 9px;
+}
+
+input[type=submit]:focus, button:focus {
+    outline: none;
 }
