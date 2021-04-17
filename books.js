@@ -106,11 +106,11 @@ bookContainer.addEventListener('click', function(e){
         myLibrary.forEach(displayBooks);
     }
     if (target.className === 'read') {
-        myLibrary[target.dataset.value] = false;
+        myLibrary[target.dataset.value].read = false;
         target.className = 'notRead';
         target.textContent = 'Not Read';
     } else if (target.className === 'notRead') {
-        myLibrary[target.dataset.value] = true;
+        myLibrary[target.dataset.value].read= true;
         target.className = 'read';
         target.textContent = 'Read';
     }
