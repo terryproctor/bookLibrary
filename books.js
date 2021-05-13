@@ -1,44 +1,39 @@
-let myLibrary = [];
+let myLibrary = []
 
 class Book {
     constructor(title, author, pages, read) {
-
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
-        this.info = () => {
-            //return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`;
-            return `${this.title} by ${this.author}, ${this.pages} pages`
-        };
-    }
-}
+    };
+        
+    get info() {
+        return `${this.title} by ${this.author}, ${this.pages} pages`
+    };
+    
+    addBookToLibrary() {myLibrary.push(this)};
+};
 
-function addBookToLibrary(title, author, pages, read) {
-    let book = new Book(title, author, pages, read);
-    myLibrary.push(book);
-    return book;
-}
-
-addBookToLibrary('Charlie and the Chocolate Factory', 'Roal Dahl', 452, true);
-addBookToLibrary('1984', 'Orsen Wells', 655, true);
-addBookToLibrary('50 Shades of Gray', 'Who Cares', 12, false)
+// initial books
+let charlie = new Book('Charlie and the Chocolate Factory', 'Roal Dahl', 452, true);
+charlie.addBookToLibrary();
+let eightyFour = new Book('1984', 'Orsen Wells', 655, true);
+eightyFour.addBookToLibrary();
 
 let bookContainer = document.getElementsByClassName('bookContainer')[0];
 
-
-// need to add function where book is displayed in DOM as a div
+// function where book is displayed in DOM as a div
 function displayBooks(item){
     // book box is divs for each box
     let bookBox = document.createElement('div');
     // book containers containers all book
-
     bookContainer.appendChild(bookBox);
     
     // book is just info for that book
     let book = document.createElement('div');
     book.className = "book";
-    book.textContent = item.info();
+    book.textContent = item.info;
     book.dataset.value = myLibrary.indexOf(item);
     let delBtn = document.createElement('button');
     delBtn.dataset.value = book.dataset.value; 
@@ -57,6 +52,7 @@ function displayBooks(item){
     book.appendChild(readBtn);
     book.appendChild(delBtn);
 }
+
 // display all books initially
 myLibrary.forEach(displayBooks);
 
@@ -87,18 +83,19 @@ form.addEventListener('submit', function(e){
         alert('All fields need to be filled in!');
         return;
     }
-    displayBooks(addBookToLibrary(title, author, pages, read));
+    let bookName = `${title}`
+    bookName = new Book(title, author, pages, read);
+    bookName.addBookToLibrary();
+    displayBooks(bookName);
     form.reset();
 })
 
 
-// need to develop function for delete button
+//event listeners for book buttons at top
 bookContainer.addEventListener('click', function(e){
     e.preventDefault();
     let target = e.target;
     if (target.className === 'delete') {
-        console.log(myLibrary)
-        console.log(target.dataset.value)
         myLibrary.splice(target.dataset.value, 1);
         //remove all child nodes
         bookContainer.querySelectorAll('*').forEach(n => n.remove());
